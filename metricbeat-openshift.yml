@@ -211,9 +211,9 @@ spec:
         ]
         env:
           - name: LOGSTASH_HOST1
-            value: 10.38.24.97
+            value: X.X.X.X
           - name: LOGSTASH_HOST2
-            value: 10.38.24.98
+            value: X.X.X.X
           - name: LOGSTASH_PORT
             value: '5044'
           - name: ELASTICSEARCH_HOST
