@@ -23,6 +23,7 @@ The Monitoring solution is described here :
 # MetricBeat:
 It will be launched as daemondSet on the clusteur with the following configuration :
 ```
+$ cat metricbeat-openshift.yml
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -402,11 +403,22 @@ metadata:
 ---
 
 ```
+```
+Launch this commands
+$ oc create -f metricbeat-openshift.yml
+
+$ oc adm policy add-scc-to-user privileged system:serviceaccount:kube-system:metricbeat
+
+$ oc patch namespace kube-system -p \
+'{"metadata": {"annotations": {"openshift.io/node-selector": ""}}}'
+
+```
 
 # FileBeat:
 It will be launched as daemondSet on the clusteur with the following configuration :
 
 ```
+$ oc create -f filebeat-openshift.yml
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -607,5 +619,15 @@ metadata:
   labels:
     k8s-app: filebeat
 ---
+
+```
+```
+Launch this commands
+$ oc create -f filebeat-openshift.yml
+
+$ oc adm policy add-scc-to-user privileged system:serviceaccount:kube-system:filebeat
+
+$ oc patch namespace kube-system -p \
+'{"metadata": {"annotations": {"openshift.io/node-selector": ""}}}'
 
 ```
