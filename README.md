@@ -404,7 +404,7 @@ metadata:
 
 ```
 ```
-Launch this commands
+Run those commands
 $ oc create -f metricbeat-openshift.yml
 
 $ oc adm policy add-scc-to-user privileged system:serviceaccount:kube-system:metricbeat
@@ -622,7 +622,7 @@ metadata:
 
 ```
 ```
-Launch this commands
+Run those commands
 $ oc create -f filebeat-openshift.yml
 
 $ oc adm policy add-scc-to-user privileged system:serviceaccount:kube-system:filebeat
