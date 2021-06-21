@@ -1,28 +1,3 @@
-# Openshift Monitoring
-
-This document describe the files used to monitor Openshift clusteurs with ***MetricBeat*** and ***FileBeats***.
-
-### Prerequisites
-
-So you should have an OpenShift 4.6+ cluster (or a Kubernetes one but it's trickier to setup) with the different features enabled:
-
-> If you don't have cli on your machine please go to those urls : 
-    <br>
-      ` oc : ` [oc-cli](https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.6/)
-
-
-
-# Monitoring Architecture
-The Monitoring solution is described here :
-![Architecture](assets/metricbeat-filebeat-monitoring.png)
-
-> ***MetricBeat*** : is monitoring solution developped by elstic to periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
-
-> ***FileBeat*** : is a logging solution that monitors the log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
-
-# MetricBeat:
-It will be launched as daemondSet on the clusteur with the following configuration :
-```
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -400,6 +375,3 @@ metadata:
   labels:
     k8s-app: metricbeat
 ---
-
-```
-
